@@ -23,7 +23,7 @@ module AppleAuth
     end
 
     def apple_key_hash(jwt)
-      response = Net::HTTP.get(URI.parse(APPLE_KEY_URL))
+      response = Faraday.get(AppleAuth::UserIdentity::APPLE_KEY_URL).body
       certificate = JSON.parse(response)
       matching_key = certificate['keys'].select { |key| key['kid'] == jwt_kid(jwt) }
       ActiveSupport::HashWithIndifferentAccess.new(matching_key.first)

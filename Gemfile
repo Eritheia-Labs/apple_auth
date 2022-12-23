@@ -4,3 +4,5 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in apple_sign_in.gemspec
 gemspec
+
+gem "faraday", "~> 2.7"
